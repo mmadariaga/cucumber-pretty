@@ -41,7 +41,7 @@ class PrettyFormatter extends Formatter {
           this.logln(tags, 'tag');
         }
 
-        const keyword = this.color('blue', feature.keyword);
+        const keyword = this.color('yellow', feature.keyword);
         this.logln(`${keyword}: ${feature.name}`);
 
         features.push(event.sourceLocation.uri);
@@ -54,14 +54,14 @@ class PrettyFormatter extends Formatter {
         this.logln(`  ${tags}`, 'tag');
       }
 
-      const keyword = this.color('blue', 'Scenario');
+      const keyword = this.color('green', 'Scenario');
       this.logln(`  ${keyword}: ${data.pickle.name}`);
     });
 
     options.eventBroadcaster.on('test-step-started', event => {
       const data = this.eventDataCollector.getTestStepData(event);
       if (data.testStep.sourceLocation) {
-        const keyword = this.color('blue', data.gherkinKeyword);
+        const keyword = this.color('green', data.gherkinKeyword);
         this.logln(`    ${keyword}${data.pickleStep.text}`);
       }
     });
